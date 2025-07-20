@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bowlekar Health | Join Now</title>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&family=Lexend:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+
+  <body class="bg-[#121516] text-white font-[Lexend, 'Noto Sans', sans-serif]">
+    <!-- Page Container -->
+    <div class="min-h-screen flex flex-col">
+      <!-- Header -->
+      <header class="flex items-center justify-between border-b border-[#2c3235] px-10 py-3">
+        <div class="flex items-center gap-4">
+          <div class="size-20">
+            <img src="https://img.fitimg.in/studio_logo_817BBC2895AA9D.png" alt="Bowlekar Logo" />
+          </div>
+          <h2 class="text-lg font-bold tracking-[-0.015em]">Bowlekar Health Center</h2>
+        </div>
+        <div class="flex flex-1 justify-end gap-8">
+          <nav class="flex items-center gap-9">
+            <a class="text-sm font-medium" href="/">Home</a>
+            <a class="text-sm font-medium" href="/services/">Services</a>
+            <a class="text-sm font-medium" href="/about/">About</a>
+            <a class="text-sm font-medium" href="/contact/">Contact</a>
+          </nav>
+          <a href="/join.html">
+            <button class="h-10 px-4 rounded-full bg-[#b2d4e5] text-[#121516] text-sm font-bold">
+              Join Now
+            </button>
+          </a>
+        </div>
+      </header>
+
+      <!-- Join Form Section -->
+      <main class="flex-grow flex items-center justify-center px-6 py-12">
+        <div class="w-full max-w-xl bg-[#1a1f20] rounded-xl p-8 shadow-lg">
+          <h1 class="text-3xl font-bold mb-4">Join Bowlekar Today</h1>
+          <p class="text-[#a2aeb3] text-sm mb-6">Start your fitness journey with us. Fill out the form below and we’ll get in touch with you!</p>
+
+          <!-- ✅ Form Starts -->
+          <form action="#" method="POST" class="space-y-5">
+            <div>
+              <label for="name" class="block text-sm font-medium mb-2">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your Name"
+                required
+                class="w-full h-12 px-4 rounded-xl bg-[#2c3235] text-white placeholder:text-[#a2aeb3] border-none focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-medium mb-2">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                required
+                class="w-full h-12 px-4 rounded-xl bg-[#2c3235] text-white placeholder:text-[#a2aeb3] border-none focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label for="phone" class="block text-sm font-medium mb-2">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Your Phone"
+                required
+                class="w-full h-12 px-4 rounded-xl bg-[#2c3235] text-white placeholder:text-[#a2aeb3] border-none focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label for="plan" class="block text-sm font-medium mb-2">Membership Plan</label>
+              <select
+                id="plan"
+                name="plan"
+                required
+                class="w-full h-12 px-4 rounded-xl bg-[#2c3235] text-white border-none focus:outline-none"
+              >
+                <option value="" disabled selected>Select a plan</option>
+                <option value="basic">Basic Plan - ₹999/month</option>
+                <option value="premium">Premium Plan - ₹1999/month</option>
+                <option value="annual">Annual Plan - ₹14,999/year</option>
+              </select>
+            </div>
+
+            <div class="pt-4">
+              <button
+                type="submit"
+                class="w-full h-12 rounded-full bg-[#b2d4e5] text-[#121516] font-bold text-sm hover:bg-[#cde3ee] transition"
+              >
+                Submit & Join
+              </button>
+            </div>
+          </form>
+          <!-- ✅ Form Ends -->
+        </div>
+      </main>
+    </div>
+
+
+<script>
+  const form = document.querySelector("form");
+  const scriptURL = "https://script.google.com/macros/s/AKfycbzknUhn1dw1-c3pGhnISdkQSQ4Wm3DXsaX9GhSe9BfW0DHClRUYzHQ8nIJQKsNTj7D4PQ/exec";
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+      console.log("Server Response:", result);
+
+      if (result.result === "success") {
+        alert("✅ Form submitted successfully!");
+        form.reset();
+      } else {
+        alert("⚠️ Submission error: " + (result.message || "Unknown error occurred."));
+      }
+    } catch (error) {
+      console.error("🚫 Fetch Error:", error);
+      alert("🚨 There was a problem submitting your form. Please try again.");
+    }
+  });
+</script>
+
+  </body>
+</html>
